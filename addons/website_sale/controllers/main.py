@@ -1234,6 +1234,7 @@ class WebsiteSale(payment_portal.PaymentPortal):
 
     @http.route(['/shop/address'], type='http', methods=['GET', 'POST'], auth="public", website=True, sitemap=False)
     def address(self, **kw):
+        # Filling fields that are not required for the customer
         Partner = request.env['res.partner'].with_context(show_address=1).sudo()
         order = request.website.sale_get_order()
 
